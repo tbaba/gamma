@@ -1,9 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', :path => '/var/src/rails'
+gem 'rails', :path => '/Users/tatsuro/src/rails'
 gem 'arel',  :git => 'git://github.com/rails/arel.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+
+# Use devise as a Authrozation
+gem 'devise'
 
 # Use unicorn as the web server
 # gem 'unicorn'
