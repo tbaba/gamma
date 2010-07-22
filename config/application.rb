@@ -38,5 +38,8 @@ module Gamma
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Using encryptor 'sha1' for Devise.
+    config.encryptor = :sha1
   end
 end

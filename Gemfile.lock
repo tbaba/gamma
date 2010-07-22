@@ -47,9 +47,11 @@ GEM
       activemodel (= 3.0.0.beta4)
       activesupport (= 3.0.0.beta4)
     activesupport (3.0.0.beta4)
+    bcrypt-ruby (2.1.2)
     builder (2.1.2)
-    devise (1.0.8)
-      warden (~> 0.10.3)
+    devise (1.1.rc2)
+      bcrypt-ruby (~> 2.1.2)
+      warden (~> 0.10.7)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.4.1)
@@ -83,6 +85,6 @@ PLATFORMS
 
 DEPENDENCIES
   arel!
-  devise
+  devise (= 1.1.rc2)
   rails!
   sqlite3-ruby
