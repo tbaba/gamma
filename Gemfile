@@ -6,7 +6,21 @@ gem 'arel',  :git => 'git://github.com/rails/arel.git'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use devise as a Authrozation
+# And use warden-openid for corresponding to OpenID
 gem 'devise', '1.1.rc2'
+gem 'warden-openid'
+
+# Use Haml and Sass for Views
+gem 'haml'
+
+# Rails 3 Generator templates plugin
+gem 'rails3-generators'
+
+group :test do
+  gem 'rspec', '>= 2.0.0.beta.18'
+  gem 'rspec-rails', '>= 2.0.0.beta.18'
+  gem 'factory_girl'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

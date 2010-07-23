@@ -2,6 +2,6 @@
 
 -if user_signed_in?
   %p "welcome, #{current_user.nickname}"
-  -link_to "log out", destroy_user_session_url
+  = link_to "log out", destroy_user_session_url
 -else
-  -link-to "log in", new_user_session_url
+  = link_to "log in", new_user_session_url
