@@ -1,0 +1,10 @@
+-form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+  %p
+    =label :openid_identifier, "OpenID URL:"
+    =text_field_tag :openid_identifier
+
+  %p 
+    =f.label :remember_me
+    =f.check_box :remember_me
+
+  %p=f.submit "Login"
