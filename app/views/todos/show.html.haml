@@ -1,0 +1,16 @@
+%p
+  %b Summary:
+  = @todo.summary
+%p
+  %b Detail:
+  = @todo.detail
+%p
+  %b Progress:
+  = @todo.progress
+%p
+  %b User:
+  = @todo.user
+
+= link_to 'Edit', edit_todo_path(@todo)
+\|
+= link_to 'Back', todos_path
