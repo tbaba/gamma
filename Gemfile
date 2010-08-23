@@ -4,6 +4,9 @@ gem 'rails', :path => '/Users/tatsuro/src/rails'
 gem 'arel',  :git => 'git://github.com/rails/arel.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'sqlite3'
+
+gem 'railroad'
 
 # Use devise as a Authrozation
 # And use warden-openid for corresponding to OpenID
@@ -15,6 +18,7 @@ gem 'haml'
 
 # Rails 3 Generator templates plugin
 gem 'rails3-generators'
+gem 'wirble'
 
 group :test do
   gem 'rspec', '>= 2.0.0.beta.18'
