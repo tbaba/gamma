@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  has_many :todos
+
   REQUIRED_FIELDS = {
     :nickname => "nickname",
+    :fullname => "fullname"
   }
 
   OPTIONAL_FIELDS = {
     :email => "email",
-    :fullname => "fullname",
     :birth_date => "dob",
     :gender => "gender",
     :postcode => "postcode",

@@ -1,83 +1,59 @@
 class TodosController < ApplicationController
-  # GET /todos
-  # GET /todos.xml
-  def index
-    @todos = Todo.all
+  respond_to :json, :html
+  before_filter :authenticate_user!
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @todos }
+  # GET /todos
+  def index
+    unless user_signed_in?
+      redirect_to new_user_session_url
+    else
+      @todos = current_user.todos.all
+      @todo = current_user.todos.build
     end
   end
 
   # GET /todos/1
-  # GET /todos/1.xml
   def show
-    @todo = Todo.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @todo }
-    end
+    @todo = current_user.todos.find params[:id]
   end
 
   # GET /todos/new
-  # GET /todos/new.xml
   def new
-    @todo = Todo.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @todo }
-    end
+    @todo = current_user.todos.new
   end
 
   # GET /todos/1/edit
   def edit
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find params[:id]
   end
 
   # POST /todos
-  # POST /todos.xml
   def create
-    @todo = Todo.new(params[:todo])
+    @todo = current_user.todos.new params[:todo]
 
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to(@todo, :notice => 'Todo was successfully created.') }
-        format.xml  { render :xml => @todo, :status => :created, :location => @todo }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
-      end
+    if @todo.save
+      redirect_to @todo, :notice => 'current_user.todo was successfully created.'
+    else
+      render :action => "new"
     end
   end
 
   # PUT /todos/1
-  # PUT /todos/1.xml
   def update
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todo.find params[:id]
 
-    respond_to do |format|
-      if @todo.update_attributes(params[:todo])
-        format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
-      end
+    if @todo.update_attributes params[:todo]
+      redirect_to @todo, :notice => 'Todo was successfully updated.'
+    else
+      render :action => "edit"
     end
   end
 
   # DELETE /todos/1
-  # DELETE /todos/1.xml
   def destroy
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todo.find params[:id]
     @todo.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(todos_url) }
-      format.xml  { head :ok }
+    redirect_to todos_url
     end
-  end
 end

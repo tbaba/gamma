@@ -1,25 +1,20 @@
-%h1 Listing todos
+%h1 Todo 
 
-%table
-  %tr
-    %th Summary
-    %th Detail
-    %th Progress
-    %th User
-    %th
-    %th
-    %th
-
-  - @todos.each do |todo|
-    %tr
-      %td= todo.summary
-      %td= todo.detail
-      %td= todo.progress
-      %td= todo.user
-      %td= link_to 'Show', todo
-      %td= link_to 'Edit', edit_todo_path(todo)
-      %td= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete
+#new_todo
+  =form_for [:user, @todo], :remote => true do |f|
+    %p
+      =f.text_field :summary
+    %p
+      =f.text_area :detail
+    %p
+      =f.submit
+    
+#todos
+  - @todos.reverse.each do |todo|
+    -div_for todo do
+      %h2= link_to(todo.summary)
+      %p= simple_format(todo.detail)
+      %div[todo, dom_id(current_user)]
+        "progress is #{todo.progress}"
 
 %br
-
-= link_to 'New todo', new_todo_path
