@@ -1,6 +1,3 @@
-$(function() {
-  $(".progress").live('mouseover', function(){
-    var value = this.val();
-    alert value;
-  }
-}
+//$(function() {
+//  $('#progress_#{dom_id(todo)}').progressBar(#{todo.progress});
+//});

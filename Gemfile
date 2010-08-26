@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+# use thin for development
+gem 'thin'
+
 gem 'rails', :path => '/Users/tatsuro/src/rails'
 gem 'arel',  :git => 'git://github.com/rails/arel.git'
 

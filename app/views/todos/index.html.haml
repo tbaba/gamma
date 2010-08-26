@@ -1,11 +1,10 @@
-%h1 Todo 
-
+%h2= "こんにちわ, #{current_user.nickname}さん"
 #new_todo
   =form_for [:user, @todo], :remote => true do |f|
     %p
       =f.text_field :summary
     %p
-      =f.text_area :detail
+      =f.text_area :detail, :cols => 40, :rows => 3
     %p
       =f.submit
     
@@ -13,8 +12,11 @@
   - @todos.reverse.each do |todo|
     -div_for todo do
       %h2= link_to(todo.summary)
-      %p= simple_format(todo.detail)
-      %div[todo, dom_id(current_user)]
-        "progress is #{todo.progress}"
+      %span= simple_format(todo.detail)
+      %span[todo, "progress"]
+      :javascript
+        $(function() {$('#progress_#{dom_id(todo)}').progressBar(#{todo.progress});});
 
+-#       %span= link_to("x", todo, :confirm => 'are you sure?', :method => :delete)
+-#     %hr
 %br

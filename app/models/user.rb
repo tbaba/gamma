@@ -56,4 +56,9 @@ class User < ActiveRecord::Base
     self.identity_url = response.identity_url
     self.nickname ||= identity_url
   end
+
+  private
+  def fullname
+    "#{last_name} #{first_name}"
+  end
 end

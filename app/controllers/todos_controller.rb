@@ -54,6 +54,6 @@ class TodosController < ApplicationController
     @todo = current_user.todo.find params[:id]
     @todo.destroy
 
-    redirect_to todos_url
+    redirect_to :back, :notice => "todo successfully deleted!"
     end
 end
